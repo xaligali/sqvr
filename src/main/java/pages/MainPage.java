@@ -2,15 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class MainPage {
 	private static WebDriver driver;
 	final static String url = "https://sqvr.ru/";
-	public final static String create_meeting_xpath = "(//*[text()='Провести собрание'])[1]";
+	private final static String create_meeting_xpath = "(//*[text()='Провести собрание'])[1]";
 
 	public MainPage(WebDriver driver) {
 
@@ -26,23 +22,11 @@ public class MainPage {
 	}
 
 	/**
-	 * Поиск элемента и клик на него
-	 *
-	 * @param str - css элемента
+	 * Переход на страницу CreateMeetingPage
+	 * @return {@link CreateMeetingPage}
 	 */
-	public static void click_xpath(String str) {
-
-		driver.findElement(By.xpath(str)).click();
+	public CreateMeetingPage goToCreateMeetingPage() {
+		driver.findElement(By.xpath(create_meeting_xpath)).click();
+		return new CreateMeetingPage(driver);
 	}
-
-	/**
-	 * Поиск элемента и клик на него
-	 *
-	 * @param str - css элемента
-	 */
-	public static void click_css(String str) {
-
-		driver.findElement(By.cssSelector(str)).click();
-	}
-
 }
